@@ -16,3 +16,12 @@ export const requestAuthApi = async data => {
 export const requestAuthUserListApi = async () => {
   return await instance.get("/auth");
 };
+
+export const requestJoin = async data => {
+  return await instance.post("/join", data);
+};
+
+export const requestLogin = async data => {
+  console.log(data);
+  return await instance.post("/login", data);
+};
