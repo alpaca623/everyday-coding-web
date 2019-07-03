@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import HomeContainer from "./container/Home";
-import HeaderBox from "./components/Header/HeaderBox";
+import JoinContainer from "./container/Join";
+import LoginContainer from "./container/Login";
 
 const Container = styled.div``;
 
@@ -11,8 +12,9 @@ class App extends React.Component {
     return (
       <Router>
         <Container>
-          <HeaderBox />
           <Route exact path="/" component={HomeContainer} />
+          <Route path="/join" component={JoinContainer} />
+          <Route path="/login" component={LoginContainer} />
         </Container>
       </Router>
     );
