@@ -20,16 +20,33 @@ const KakaoLoginBtn = styled.button`
   background-color: Yellow;
 `;
 
+const JoinBtn = styled.button``;
+
 class HeaderBox extends React.Component {
   render() {
     return (
       <Header>
-        <h1>매일 코딩 인증하기 v 0.1</h1>
+        <h1>
+          <Link to="/">매일 코딩 인증하기 v 0.1</Link>
+        </h1>
         <LoginBox>
-          <KakaoLoginBtn>
-            {/* <Link to="">카카오 로그인</Link> */}
+          {/* <KakaoLoginBtn>
             <a href="http://localhost:4003/login/kakao">카카오 로그인</a>
-          </KakaoLoginBtn>
+          </KakaoLoginBtn> */}
+          <JoinBtn
+            onClick={() =>
+              window.open("/join", "PopupWin", "width=500,height=600")
+            }
+          >
+            가입하기
+          </JoinBtn>
+          <JoinBtn
+            onClick={() =>
+              window.open("/login", "PopupWin", "width=500,height=600")
+            }
+          >
+            로그인
+          </JoinBtn>
         </LoginBox>
       </Header>
     );

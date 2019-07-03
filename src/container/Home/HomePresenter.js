@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import AuthenticationBox from "../../components/Home/AuthenticationBox";
 import AuthenticatorBox from "../../components/Home/AuthenticatorBox";
+import HeaderBox from "../../components/Header/HeaderBox";
 
 const Container = styled.div`
   width: 80%;
@@ -18,6 +19,7 @@ const Main = styled.main`
 
 const HomePresenter = props => (
   <Container>
+    <HeaderBox />
     <Main>
       <AuthenticationBox requestAuth={props.requestAuth} />
       <AuthenticatorBox authUserList={props.authUserList} />
