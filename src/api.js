@@ -13,6 +13,11 @@ export const requestAuthApi = async data => {
   return result;
 };
 
+export const requestAuthDetailApi = async id => {
+  const result = await instance.get("/auth/detail", { params: { id } });
+  return result;
+};
+
 export const requestAuthUserListApi = async () => {
   return await instance.get("/auth");
 };
@@ -22,6 +27,5 @@ export const requestJoin = async data => {
 };
 
 export const requestLogin = async data => {
-  console.log(data);
   return await instance.post("/login", data);
 };
