@@ -19,11 +19,17 @@ class LoginContainer extends React.Component {
       [e.target.name]: e.target.value
     });
   };
+
+  handleNaver = () => {
+    alert('naver login');
+  }
+
   render() {
     return (
       <LoginPresenter
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
+        handleNaver={this.handleNaver}
       />
     );
   }

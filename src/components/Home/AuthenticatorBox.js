@@ -29,7 +29,7 @@ const AuthUserContent = styled.span`
 `;
 
 const AuthenticatorBox = props => {
-  const { loading, authUserList } = props;
+  const { loading, authUserList, authClick } = props;
   return (
     <Container>
       <AuthBox>
@@ -43,7 +43,9 @@ const AuthenticatorBox = props => {
             authUserList.map(authUser => (
               <AuthUserBox key={authUser._id}>
                 <AuthUserTitle>{authUser.author}</AuthUserTitle>
-                <AuthUserContent>{authUser.auth_content}</AuthUserContent>
+                <AuthUserContent onClick={() => authClick(authUser._id)}>
+                  {authUser.auth_content}
+                </AuthUserContent>
               </AuthUserBox>
             ))
           ) : (

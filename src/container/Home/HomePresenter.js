@@ -17,14 +17,21 @@ const Main = styled.main`
   align-items: center;
 `;
 
-const HomePresenter = props => (
-  <Container>
-    <HeaderBox />
-    <Main>
-      <AuthenticationBox requestAuth={props.requestAuth} />
-      <AuthenticatorBox authUserList={props.authUserList} />
-    </Main>
-  </Container>
-);
+const HomePresenter = props => {
+  const { authClick, loading, authUserList, requestAuth } = props;
+  return (
+    <Container>
+      <HeaderBox />
+      <Main>
+        <AuthenticationBox requestAuth={requestAuth} />
+        <AuthenticatorBox
+          loading={loading}
+          authClick={authClick}
+          authUserList={authUserList}
+        />
+      </Main>
+    </Container>
+  );
+};
 
 export default HomePresenter;

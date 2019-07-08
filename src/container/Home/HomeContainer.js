@@ -35,6 +35,11 @@ class HomeContainer extends React.Component {
     return requestAuthUserListApi();
   };
 
+  authClick = id => {
+    window.open(`/detail/${id}`, "PopupWin", "width=500,height=600");
+  };
+
+
   render() {
     const { loading, authUserList } = this.state;
     return (
@@ -42,6 +47,7 @@ class HomeContainer extends React.Component {
         requestAuth={this.requestAuth}
         loading={loading}
         authUserList={authUserList}
+        authClick={this.authClick}
       />
     );
   }
