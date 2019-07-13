@@ -29,7 +29,7 @@ const AuthUserContent = styled.span`
 `;
 
 const AuthenticatorBox = props => {
-  const { loading, authUserList, authClick } = props;
+  const { loading, certificationList, certificationDetailClick } = props;
   return (
     <Container>
       <AuthBox>
@@ -38,13 +38,13 @@ const AuthenticatorBox = props => {
         <h3>오늘의 인증자 목록</h3>
         <AuthUserList>
           {!loading &&
-          Array.isArray(authUserList) &&
-          authUserList.length > 0 ? (
-            authUserList.map(authUser => (
-              <AuthUserBox key={authUser._id}>
-                <AuthUserTitle>{authUser.author}</AuthUserTitle>
-                <AuthUserContent onClick={() => authClick(authUser._id)}>
-                  {authUser.auth_content}
+          Array.isArray(certificationList) &&
+          certificationList.length > 0 ? (
+            certificationList.map(certification => (
+              <AuthUserBox key={certification._id}>
+                <AuthUserTitle>{certification.author}</AuthUserTitle>
+                <AuthUserContent onClick={() => certificationDetailClick(certification._id)}>
+                  {certification.certification_content}
                 </AuthUserContent>
               </AuthUserBox>
             ))

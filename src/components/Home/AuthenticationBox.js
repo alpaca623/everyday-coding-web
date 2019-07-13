@@ -32,8 +32,8 @@ class AuthenticationBox extends React.Component {
     super(props);
 
     this.state = {
-      auth_type: "0",
-      auth_content: ""
+      certification_type: "0",
+      certification_content: ""
     };
   }
 
@@ -44,26 +44,25 @@ class AuthenticationBox extends React.Component {
   };
 
   handleRequest = () => {
-    if (this.state.auth_type === "0") {
+    if (this.state.certification_type === "0") {
       alert("인증 종류를 선택해주세요");
       return;
     }
-    if (this.state.auth_content === "") {
+    if (this.state.certification_content === "") {
     }
-    this.props.requestAuth(this.state);
-    this.setState({ auth_type: "0", auth_content: "" });
+    this.props.requestCertification(this.state);
+    this.setState({ certification_type: "0", certification_content: "" });
   };
 
   render() {
     return (
       <Container>
-        <form onSubmit={this.handleRequest}>
           <AuthBox>
             <AuthInput>
               <AuthType
-                name="auth_type"
+                name="certification_type"
                 onChange={this.handleChange}
-                value={this.state.auth_type}
+                value={this.state.certification_type}
               >
                 <option value="0">선택하세요</option>
                 <option value="1">github</option>
@@ -72,14 +71,13 @@ class AuthenticationBox extends React.Component {
                 placeholder="인증내용을 입력해주세요"
                 cols="30"
                 rows="10"
-                name="auth_content"
+                name="certification_content"
                 onChange={this.handleChange}
-                value={this.state.auth_content}
+                value={this.state.certification_content}
               />
             </AuthInput>
-            <AuthBtn type="submit">인증하기</AuthBtn>
+            <AuthBtn onClick={this.handleRequest}>인증하기</AuthBtn>
           </AuthBox>
-        </form>
       </Container>
     );
   }

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import naverLogin from '../../assets/images/login/naver_login_btn.PNG';
+import naverLogin from "../../assets/images/login/naver_login_btn.PNG";
 
 const Container = styled.div`
   padding: 30px;
@@ -11,14 +11,14 @@ const Container = styled.div`
 
 const TextBox = styled.div`
   margin-top: 20px;
-  margin: 15px 0 ;
+  margin: 15px 0;
 `;
 
 const TextInput = styled.input`
   width: 200px;
   height: 30px;
   border: 1px solid black;
-  margin-left:20px;
+  margin-left: 20px;
 `;
 
 const TextLabel = styled.label``;
@@ -32,7 +32,7 @@ const CancleBtn = styled.button``;
 const OtherLogin = styled.div``;
 
 const NaverLogin = styled.img`
-  width:100px;
+  width: 100px;
 `;
 
 const LoginPresenter = props => {
@@ -50,8 +50,17 @@ const LoginPresenter = props => {
             onChange={handleChange}
           />
         </TextBox>
+        <TextBox>
+          <TextLabel>암호</TextLabel>
+          <TextInput
+            id="password"
+            name="password"
+            type="password"
+            onChange={handleChange}
+          />
+        </TextBox>
         <OtherLogin>
-          <NaverLogin src={naverLogin} onClick={handleNaver}/>
+          <NaverLogin src={naverLogin} onClick={handleNaver} />
         </OtherLogin>
         <ButtonBox>
           <SubmitBtn type="submit">로그인</SubmitBtn>

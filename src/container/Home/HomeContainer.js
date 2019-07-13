@@ -1,6 +1,6 @@
 import React from "react";
 import HomePresenter from "./HomePresenter";
-import { requestAuthApi, requestAuthUserListApi } from "../../api";
+import { certificationListApi, certificationCreateApi } from "../../api";
 
 class HomeContainer extends React.Component {
   constructor(props) {
@@ -8,46 +8,49 @@ class HomeContainer extends React.Component {
 
     this.state = {
       loading: true,
-      authUserList: []
+      certificationList: []
     };
   }
 
   componentDidMount = async () => {
-    let authUserList;
+    let certificationList;
     try {
-      ({ data: authUserList } = await requestAuthUserListApi());
+      ({
+        data: certificationList
+      } = await this.certificationList());
     } catch (e) {
       console.log(e);
     } finally {
       this.setState({
         loading: false,
-        authUserList
+        certificationList
       });
     }
   };
 
-  requestAuth = data => {
-    // console.log("hi", this.props);
-    requestAuthApi(data);
+  // 인증 생성 요청
+  requestCertification = data => {
+    certificationCreateApi(data);
   };
 
-  requestAuthUserList = () => {
-    return requestAuthUserListApi();
+  // 인증 유저 리스트 요청
+  certificationList = () => {
+    return certificationListApi();
   };
 
-  authClick = id => {
+  // 인증 상세 조회하기
+  certificationDetailClick = id => {
     window.open(`/detail/${id}`, "PopupWin", "width=500,height=600");
   };
 
-
   render() {
-    const { loading, authUserList } = this.state;
+    const { loading, certificationList } = this.state;
     return (
       <HomePresenter
-        requestAuth={this.requestAuth}
+        requestCertification={this.requestCertification}
         loading={loading}
-        authUserList={authUserList}
-        authClick={this.authClick}
+        certificationList={certificationList}
+        certificationDetailClick={this.certificationDetailClick}
       />
     );
   }

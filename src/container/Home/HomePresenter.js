@@ -18,16 +18,16 @@ const Main = styled.main`
 `;
 
 const HomePresenter = props => {
-  const { authClick, loading, authUserList, requestAuth } = props;
+  const { loading, requestCertification, certificationDetailClick, certificationList } = props;
   return (
     <Container>
       <HeaderBox />
       <Main>
-        <AuthenticationBox requestAuth={requestAuth} />
+        <AuthenticationBox requestCertification={requestCertification} />
         <AuthenticatorBox
           loading={loading}
-          authClick={authClick}
-          authUserList={authUserList}
+          certificationDetailClick={certificationDetailClick}
+          certificationList={certificationList}
         />
       </Main>
     </Container>

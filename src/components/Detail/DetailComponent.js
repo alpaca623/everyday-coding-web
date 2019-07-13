@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { requestAuthDetailApi } from "../../api";
+import { certificationDetailApi } from "../../api";
 
 const Container = styled.div``;
 
@@ -25,7 +25,7 @@ class DetailComponent extends React.Component {
     } = this.props;
     let data = {};
     try {
-      ({ data } = await requestAuthDetailApi(id));
+      ({ data } = await certificationDetailApi(id));
     } catch (e) {
       console.log(e);
     } finally {
