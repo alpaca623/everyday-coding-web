@@ -4,9 +4,9 @@ const instance = axios.create({
   baseURL: "http://localhost:4003"
 });
 
-// 인증 유저 리스트 조회
-export const certificationListApi = async () => {
-  return await instance.get("/certification");
+// 인증 유저 리스트 조회 - 조건 입력시 파라미터 추가
+export const certificationListApi = async date => {
+  return await instance.get("/certification", { params: { date } });
 };
 
 // 인증 생성
@@ -19,7 +19,7 @@ export const certificationCreateApi = async data => {
   return result;
 };
 
-// 인증 조회
+// 인증 상세 조회
 export const certificationDetailApi = async id => {
   const result = await instance.get("/certification/detail", {
     params: { id }

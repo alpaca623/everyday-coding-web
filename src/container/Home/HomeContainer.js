@@ -1,6 +1,7 @@
 import React from "react";
 import HomePresenter from "./HomePresenter";
 import { certificationListApi, certificationCreateApi } from "../../api";
+import { todayString } from "../../util";
 
 class HomeContainer extends React.Component {
   constructor(props) {
@@ -15,9 +16,7 @@ class HomeContainer extends React.Component {
   componentDidMount = async () => {
     let certificationList;
     try {
-      ({
-        data: certificationList
-      } = await this.certificationList());
+      ({ data: certificationList } = await this.todayCertificationList());
     } catch (e) {
       console.log(e);
     } finally {
@@ -33,8 +32,8 @@ class HomeContainer extends React.Component {
     certificationCreateApi(data);
   };
 
-  // 인증 유저 리스트 요청
-  certificationList = () => {
+  // 오늘의 인증 유저 리스트 요청
+  todayCertificationList = () => {
     return certificationListApi();
   };
 
