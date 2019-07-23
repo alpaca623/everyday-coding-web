@@ -1,16 +1,17 @@
 import React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+import * as certificationActions from "../../store/modules/certification";
+
 import HomePresenter from "./HomePresenter";
 import { certificationListApi, certificationCreateApi } from "../../api";
 import { todayString } from "../../util";
 
 class HomeContainer extends React.Component {
+  // 필요 없음..?
   constructor(props) {
     super(props);
-
-    this.state = {
-      loading: true,
-      certificationList: []
-    };
   }
 
   componentDidMount = async () => {
@@ -43,15 +44,35 @@ class HomeContainer extends React.Component {
   };
 
   render() {
-    const { loading, certificationList } = this.state;
+    const { loading, certificationList } = this.props;
     return (
       <HomePresenter
         requestCertification={this.requestCertification}
-        loading={loading}
+        loading={false}
         certificationList={certificationList}
         certificationDetailClick={this.certificationDetailClick}
       />
     );
   }
 }
-export default HomeContainer;
+
+// props 값으로 넣어줄 상태를 정의
+/**
+ * redux에서 이 함수 매개변수에 state를 매칭해준다.
+ * 이 state는 store에서 선언한 state가 매칭되어 들어온다.
+ */
+const mapStateToProps = state => ({ certification: state.certification });
+
+// props 값으로 넣어 줄 액션 함수들을 정의
+/**
+ * redux에서 이 함수 매개변수에 dispatch를 전달해준다.
+ * dispatch로 store에서 선언한 함수들을 사용할 수 있다.
+ */
+const mapDispatchToProps = dispatch => ({
+  CertificationActions: bindActionCreators(certificationActions, dispatch)
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomeContainer);
